@@ -37,4 +37,9 @@
       <Filter>lib\ScriptHookV</Filter>
     </Library>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="LICENSE" />
+    <None Include="LICENSE.CitizenFX" />
+    <None Include="README.md" />
+  </ItemGroup>
 </Project>
