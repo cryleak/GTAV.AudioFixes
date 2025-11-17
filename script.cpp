@@ -11,7 +11,7 @@
  `ScriptMain()` directly.
 */
 
-#include "inc\main.h"
+#include "lib\ScriptHookV_SDK\inc\main.h"
 #include "script.h"
 #include "utils.h"
 #include <windows.h>

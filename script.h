@@ -6,10 +6,10 @@
 
 #pragma once
 
-#include "inc\natives.h"
-#include "inc\types.h"
-#include "inc\enums.h"
+#include "lib\ScriptHookV_SDK\inc\natives.h"
+#include "lib\ScriptHookV_SDK\inc\types.h"
+#include "lib\ScriptHookV_SDK\inc\enums.h"
 
-#include "inc\main.h"
+#include "lib\ScriptHookV_SDK\inc\main.h"
 
 extern "C" void ScriptMain();
