@@ -1,7 +1,7 @@
- /*
-	THIS FILE IS A PART OF GTA V SCRIPT HOOK SDK
-				http://dev-c.com			
-			(C) Alexander Blade 2015 (modified)
+/*
+   THIS FILE IS A PART OF GTA V SCRIPT HOOK SDK
+			   http://dev-c.com
+		   (C) Alexander Blade 2015 (modified)
 */
 
 /*
@@ -104,7 +104,7 @@ void main()
 	const char* audioTimeoutPattern = "8B 15 ? ? ? ? 41 03 D6 3B";
 
 	/*
-	*\tCredit to Special For for finding this CSystem frame limiter sleep loop and 
+	*\tCredit to Special For for finding this CSystem frame limiter sleep loop and
 	*/
 	const char* frameLimiterPattern = "F3 44 0F 59 05 ? ? ? ? 0F 28 C7 F3 41 0F 58 C0 0F 2F C6 72 ? E8";
 	const char* audioLimiter2Pattern = "48 8B 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? 40 38 35 ?? ?? ?? ?? 75 ?? 40 38 35 ?? ?? ?? ?? 75 ?? E8 ?? ?? ?? ?? 84 C0";
