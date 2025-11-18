@@ -1,4 +1,4 @@
-/*
+ /*
 	THIS FILE IS A PART OF GTA V SCRIPT HOOK SDK
 				http://dev-c.com			
 			(C) Alexander Blade 2015 (modified)
@@ -25,8 +25,7 @@ static std::atomic_bool g_shouldTerminate{ false };
 
 static DWORD WINAPI ScriptThreadProc(LPVOID)
 {
-	// Run the script entrypoint. ScriptMain() is expected to return when
-	// the script work is done. Keep this small and robust.
+	// Run the script entrypoint
 	__try
 	{
 		ScriptMain();
@@ -93,8 +92,7 @@ void main()
 	static bool useSynchronousAudio = true;
 	static bool lastUseSynchronousAudio = false;
 
-	uintptr_t base = (uintptr_t)GetModuleHandle("GTA5.exe");
-
+	uintptr_t base = (uintptr_t)GetModuleHandle(NULL);
 
 	/*
 	*\tAdapted from the CitizenFX project, retrieved 2022-12-04.
@@ -111,11 +109,11 @@ void main()
 	const char* frameLimiterPattern = "F3 44 0F 59 05 ? ? ? ? 0F 28 C7 F3 41 0F 58 C0 0F 2F C6 72 ? E8";
 	const char* audioLimiter2Pattern = "48 8B 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? 40 38 35 ?? ?? ?? ?? 75 ?? 40 38 35 ?? ?? ?? ?? 75 ?? E8 ?? ?? ?? ?? 84 C0";
 
-	bool* asynchronousAudio = get_address<bool*>((uintptr_t)PatternScan(GetModuleHandleW(L"GTA5.exe"), asynchronousAudioPattern) + 8);
-	int* audioTimeout = get_address<int*>((uintptr_t)PatternScan(GetModuleHandleW(L"GTA5.exe"), audioTimeoutPattern) + 2);
+	bool* asynchronousAudio = get_address<bool*>((uintptr_t)PatternScan(GetModuleHandleW(NULL), asynchronousAudioPattern) + 8);
+	int* audioTimeout = get_address<int*>((uintptr_t)PatternScan(GetModuleHandleW(NULL), audioTimeoutPattern) + 2);
 
-	uint8_t* frameLimiterLoop = (uint8_t*)(PatternScan(GetModuleHandleW(L"GTA5.exe"), frameLimiterPattern));
-	uint8_t* audioLimiter2 = (uint8_t*)(PatternScan(GetModuleHandleW(L"GTA5.exe"), audioLimiter2Pattern));
+	uint8_t* frameLimiterLoop = (uint8_t*)(PatternScan(GetModuleHandleW(NULL), frameLimiterPattern));
+	uint8_t* audioLimiter2 = (uint8_t*)(PatternScan(GetModuleHandleW(NULL), audioLimiter2Pattern));
 	if (uncapFPS) {
 		*asynchronousAudio = false;
 
