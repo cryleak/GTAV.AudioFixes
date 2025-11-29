@@ -5,10 +5,7 @@
 */
 
 /*
- Reworked to run the script DLL without relying on ScriptHookV.
- Instead of calling scriptRegister/scriptUnregister (which are provided
- by ScriptHookV), we create a dedicated thread on DLL attach that runs
- `ScriptMain()` directly.
+ Reworked to run the script DLL without relying on ScriptHookV by not using scriptRegister/scriptUnregister
 */
 
 #include "lib\ScriptHookV_SDK\inc\main.h"
@@ -23,16 +20,19 @@
 static HANDLE g_scriptThread = nullptr;
 static std::atomic_bool g_shouldTerminate{ false };
 
+
 static DWORD WINAPI ScriptThreadProc(LPVOID)
 {
-	// Run the script entrypoint
-	__try
-	{
-		ScriptMain();
-	}
-	__except (EXCEPTION_EXECUTE_HANDLER)
-	{
-		// swallow exceptions to avoid crashing host process
+	while (true) {
+		__try
+		{
+			ScriptMain();
+		}
+		__except (EXCEPTION_EXECUTE_HANDLER)
+		{
+			// dont crash my game please
+		}
+		Sleep(1000);
 	}
 	return 0;
 }
